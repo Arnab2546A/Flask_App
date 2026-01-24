@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 app=Flask(__name__)
 @app.route("/")
 def home():
@@ -9,5 +9,12 @@ def about():
 @app.route("/contact")
 def contact():
     return "this is the contact page."
+#methods GET and POST
+@app.route("/submit",methods=["GET","POST"])
+def submit():
+    if request.method=="POST":
+        return "you are sending data"
+    else:
+        return "you are viewing data"
 if __name__ == "__main__":
     app.run(debug=True)  
